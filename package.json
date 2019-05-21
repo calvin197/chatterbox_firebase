@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "env-cmd nodemon ./server/index.js",
-    "build-react": "webpack -w --mode=development",
-    "open": "start http://localhost:3000"
+    "start": "node ./server/index.js",
+    "build-react": "webpack -w --mode=development"
+  },
+  "engine": {
+    "node": "10.15.3"
   },
   "keywords": [],
-  "author": "",
+  "author": "Calvin",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
