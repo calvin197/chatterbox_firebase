@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "env-cmd node ./Server/index.js",
+    "start": "node ./Server/index.js",
+    "dev-start": "env-cmd nodemon ./Server/index.js",
     "build-react": "webpack -w --mode=development"
   },
   "engine": {
