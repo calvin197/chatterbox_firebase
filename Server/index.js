@@ -6,12 +6,12 @@ const router = require('../Database/router')
 // const menus = require('../database/models.js')
 
 //require middleware
-var morgan = require("morgan")
+// var morgan = require("morgan")
 
 //use middleware
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-app.use(morgan('dev'))
+// app.use(morgan('dev'))
 
 // app.get('/', (req, res)=>{
 //     res.status(200).send('success chatterbox!!!!')
