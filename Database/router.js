@@ -4,7 +4,7 @@ const router = new express.Router()
 
 //cron task
 var CronJob = require('cron').CronJob;
-new CronJob('*/2 * * * *', async ()=> {
+new CronJob('*/15 * * * *', async ()=> {
 	const createdBy = (new Date()).toString()
 	const time = [
 		new Date().getDate(),
@@ -14,7 +14,7 @@ new CronJob('*/2 * * * *', async ()=> {
  ].join(':').toString();
 	try{
 		const firebaseResponse = await firebaseDB.ref('post').push({
-			text : `This is cron bot!! I am posting every 2 minutes! The time now is ${time}`,
+			text : `This is cron bot!! I am posting every 15 minutes! The time now is ${time}`,
 			roomname: 'Cron Bot Party',
 			username: 'Mr. Cron',
 			createdBy
