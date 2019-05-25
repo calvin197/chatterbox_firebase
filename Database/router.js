@@ -2,11 +2,29 @@ const firebaseDB = require('./firebase.js')
 const express = require('express')
 const router = new express.Router()
 
+//cron task
+var CronJob = require('cron').CronJob;
+new CronJob('*/2 * * * *', async ()=> {
+	const createdBy = (new Date()).toString()
+	const time = [
+		new Date().getDate(),
+		new Date().getHours(),
+		new Date().getMinutes(),
+		new Date().getSeconds(),
+ ].join(':').toString();
+	try{
+		const firebaseResponse = await firebaseDB.ref('post').push({
+			text : `This is cron bot!! I am posting every 2 minutes! The time now is ${time}`,
+			roomname: 'Cron Bot Party',
+			username: 'Mr. Cron',
+			createdBy
+		})		
+		console.log('cron task successfully posting!')
+	}catch(e){
+		console.log('cron task fails to post!')
+	}
+}, null, true, 'America/Los_Angeles');
 
-// firebaseDB.ref('post').on("value", function(snapshot, prevChildKey) {
-//   var newPost = snapshot.val();
-// 	console.log(newPost);
-// });
 
 //Retrieve all the posts
 router.get('/firebase', async (req, res)=> {
